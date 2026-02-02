@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration - MediQR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-purple: #4a00e0;
+            --secondary-purple: #8e2de2;
+            --text-dark: #333;
+            --text-light: #888;
+            --bg-white: #fff;
+            --bg-light-gray: #f5f5f5;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #f0f2f5; }
+
+        /* Main Container and Layout */
+        .registration-page {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            min-height: 700px;
+            background-color: var(--bg-white);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
+            border-radius: 25px;
+            overflow: hidden;
+        }
+
+        /* Left Sidebar */
+        .sidebar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(135deg, var(--secondary-purple), var(--primary-purple));
+            color: var(--bg-white);
+        }
+        .sidebar h1 { font-size: 3rem; font-weight: 800; margin-bottom: 20px; }
+        .sidebar p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 40px; }
+        .sidebar .login-btn { 
+            padding: 12px 40px; border: 2px solid var(--bg-white); border-radius: 30px; 
+            background: transparent; color: var(--bg-white); font-size: 1rem; font-weight: 600; 
+            text-decoration: none; transition: all 0.3s ease; 
+        }
+        .sidebar .login-btn:hover { background-color: var(--bg-white); color: var(--primary-purple); }
+
+        /* Form Area */
+        .form-area {
+            flex: 1.2; 
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center the content */
+        }
+
+        /* Tab Switcher (Specific to Patient/Hospital) */
+        .tab-switcher {
+            display: flex; width: 100%; max-width: 300px; background-color: #f0f0f0;
+            border-radius: 30px; padding: 5px; margin-bottom: 40px;
+        }
+        .tab-switcher button {
+            flex: 1; padding: 10px 0; border: none; border-radius: 30px;
+            background-color: transparent; color: var(--text-dark); font-weight: 600; cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .tab-switcher .patient-tab { 
+            background: var(--primary-purple); color: var(--bg-white); 
+            box-shadow: 0 4px 10px rgba(74, 0, 224, 0.4);
+        }
+
+        .form-area h2 { font-size: 1.8rem; font-weight: 700; color: var(--text-dark); margin-bottom: 30px; align-self: flex-start; }
+
+        /* Input Styling */
+        .input-group { position: relative; width: 100%; max-width: 400px; margin-bottom: 20px; }
+        .input-group input {
+            width: 100%; padding: 15px 15px 15px 45px; border: none; background-color: var(--bg-light-gray);
+            border-radius: 10px; font-size: 1rem; color: var(--text-dark); outline: none;
+        }
+        .input-group i {
+            position: absolute; left: 15px; top: 50%; transform: translateY(-50%);
+            color: var(--text-light); font-size: 1rem; pointer-events: none;
+        }
+        
+        /* Submit Button */
+        .submit-btn {
+            display: block; width: 100%; max-width: 400px; padding: 15px; border: none;
+            border-radius: 50px; background: linear-gradient(90deg, var(--secondary-purple), var(--primary-purple));
+            color: var(--bg-white); font-size: 1.1rem; font-weight: 600; text-transform: uppercase;
+            cursor: pointer; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(74, 0, 224, 0.4);
+        }
+        .submit-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+
+        .login-text { text-align: center; margin-top: 20px; font-size: 0.9rem; }
+        .login-text a { color: var(--primary-purple); font-weight: 600; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<div class="registration-page">
+    <div class="sidebar">
+        <h1>Your Health in Your Hands</h1>
+        <p>Securely manage and access your medical records anytime, anywhere. Take control of your healthcare journey today.</p>
+        <a href="/login" class="login-btn">Login</a>
+    </div>
+
+    <div class="form-area">
+        
+        <div class="tab-switcher">
+            <button class="patient-tab">Patient</button>
+            <a href="/" class = "Hosptal-tab"><button>Hospital</button></a>
+        </div>
+
+        <h2>CREATE PATIENT ACCOUNT</h2>
+
+        <form action ="/user/registerpatient" method = "POST" style="width: 100%; max-width: 400px;"  >
+            <div class="input-group">
+                <input type="text" name = "username" placeholder="Username" required>
+                <i class="fas fa-user"></i>
+            </div>
+            
+            <div class="input-group">
+                <input type="email" name = "email" placeholder="Email" required>
+                <i class="fas fa-envelope"></i>
+            </div>
+            
+            <div class="input-group">
+                <input type="password" name = "password" placeholder="Password" required>
+                <i class="fas fa-lock"></i>
+            </div>
+
+            <button type="submit" class="submit-btn">Register</button>
+            
+            <p class="login-text">Already have an account? <a href="/login">Login</a></p>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
