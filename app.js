@@ -1,4 +1,4 @@
-// import express from 'express';
+import express from 'express';
 import path from 'path';
 import router from './routs/user.routs.js';
 import hospitalrouter from './routs/hospital.routs.js'; // <-- ADD THIS IMPORT
